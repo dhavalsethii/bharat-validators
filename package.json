@@ -1,0 +1,63 @@
+{
+  "name": "bharat-validators",
+  "version": "1.0.0",
+  "description": "Zero-dependency, fully-typed validators for Indian identifiers — Aadhaar, PAN, GSTIN, IFSC, Mobile, PIN code",
+  "keywords": [
+    "india",
+    "validator",
+    "aadhaar",
+    "pan",
+    "gstin",
+    "gst",
+    "ifsc",
+    "pincode",
+    "mobile",
+    "phone",
+    "typescript",
+    "zero-dependency"
+  ],
+  "author": "Dhaval Sethi",
+  "license": "MIT",
+  "type": "commonjs",
+  "main": "dist/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "build": "tsc && tsc -p tsconfig.esm.json && node -e \"require('fs').writeFileSync('dist/esm/package.json', JSON.stringify({type: 'module'}))\"",
+    "test": "jest --coverage",
+    "test:watch": "jest --watch",
+    "lint": "tsc --noEmit",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run build && npm test",
+    "pack:dry": "npm pack --dry-run"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.12.7",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.2",
+    "typescript": "^5.4.5"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
+}
